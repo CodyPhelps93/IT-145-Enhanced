@@ -1,0 +1,213 @@
+﻿@using GraziosoBlazorApp.Models
+@using GraziosoBlazorApp.Services
+@inject MongoDbService MongoDbService
+@inject IJSRuntime JSRuntime
+@inject InputValidationChecker InputValidator
+
+@if (isVisible)
+{
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(isEdit ? "Edit Animal" : "Add " + (rescueAnimal?.Type ?? "Animal"))</h5>
+                    <button type="button" class="close" @onclick="Hide">×</button>
+                </div>
+                <div class="modal-body">
+                    @if (rescueAnimal != null)
+                    {
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" @bind="rescueAnimal.Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select class="form-control" @bind="rescueAnimal.Gender">
+                                <option>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input class="form-control" type="number" @bind="rescueAnimal.Age" min="0" />
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (lb)</label>
+                            <input class="form-control" type="number" step="0.1" @bind="rescueAnimal.Weight" min="0" />
+                        </div>
+                        <div class="form-group">
+                            <label>Acquisition Date</label>
+                            <InputDate class="form-control" @bind-Value="rescueAnimal.AcquisitionDate" TValue="DateTime"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Acquisition Country</label>
+                            <select class="form-control" @bind="rescueAnimal.AcquisitionCountry">
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Russia">Russia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Training Status</label>
+                            <select class="form-control" @bind="rescueAnimal.TrainingStatus">
+                                <option value="intake">Intake</option>
+                                <option value="Phase I">Phase I</option>
+                                <option value="in service">In Service</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Reserved</label>
+                            <input type="checkbox" @bind="rescueAnimal.Reserved" />
+                        </div>
+                        <div class="form-group">
+                            <label>In Service Country</label>
+                            <select class="form-control" @bind="rescueAnimal.InServiceCountry">
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Russia">Russia</option>
+                            </select>
+                        </div>
+
+                        @if (rescueAnimal.Type == "Dog" && rescueAnimal is Dog dog)
+                        {
+                            <div class="form-group">
+                                <label>Breed</label>
+                                <input class="form-control" @bind="dog.Breed" />
+                            </div>
+                        }
+                        else if (rescueAnimal.Type == "Monkey" && rescueAnimal is Monkey monkey)
+                        {
+                            <div class="form-group">
+                                <label>Species</label>
+                                <select class="form-control" @bind="monkey.Species">
+                                    <option value="Capuchin">Capuchin</option>
+                                    <option value="Guenon">Guenon</option>
+                                    <option value="Macaque">Macaque</option>
+                                    <option value="Marmoset">Marmoset</option>
+                                    <option value="Squirrel Monkey">Squirrel Monkey</option>
+                                    <option value="Tamarin">Tamarin</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tail Length</label>
+                                <input class="form-control" @bind="monkey.TailLength" />
+                            </div>
+                            <div class="form-group">
+                                <label>Height</label>
+                                <input class="form-control" @bind="monkey.Height" />
+                            </div>
+                            <div class="form-group">
+                                <label>Body Length</label>
+                                <input class="form-control" @bind="monkey.BodyLength" />
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Loading animal data...</p>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="SaveAnimal" disabled="@(rescueAnimal == null)">Save</button>
+                    <button type="button" class="btn btn-secondary" @onclick="Hide">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private RescueAnimal? rescueAnimal;
+    private bool isEdit = false;
+    private bool isVisible = false;
+    [Parameter] public EventCallback OnAnimalAdded { get; set; }
+
+
+    public void Show(RescueAnimal? animal, string type)
+    {
+        isEdit = animal != null;
+        // sets defaults for selections
+        rescueAnimal = animal ?? (type == "Dog" ? new Dog { Type = "Dog", AcquisitionCountry = "United States", TrainingStatus = "Intake", InServiceCountry = "United States" } 
+        : new Monkey { Type = "Monkey", Species = "Capuchin", AcquisitionCountry = "United States", TrainingStatus = "Intake", InServiceCountry = "United States" });
+        isVisible = true;
+        StateHasChanged();
+    }
+
+    private void Hide()
+    {
+        isVisible = false;
+        rescueAnimal = null;
+        StateHasChanged();
+    }
+
+    //Checks for inputs then saves animal data
+    private async Task SaveAnimal()
+    {
+        if (rescueAnimal == null)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Animal data is not initialized!");
+            return;
+        }
+
+        // Checks for null values
+        if (string.IsNullOrWhiteSpace(rescueAnimal.Name) || string.IsNullOrWhiteSpace(rescueAnimal.Gender) ||
+            rescueAnimal.Age < 0 || rescueAnimal.Weight <= 0 ||
+            rescueAnimal.AcquisitionDate == default || rescueAnimal.AcquisitionDate < new DateTime(1900,1,1) || string.IsNullOrWhiteSpace(rescueAnimal.AcquisitionCountry) ||
+            string.IsNullOrWhiteSpace(rescueAnimal.TrainingStatus) || string.IsNullOrWhiteSpace(rescueAnimal.InServiceCountry))
+        {
+
+            await JSRuntime.InvokeVoidAsync("alert", "All fields are required, and Age/Weight must be positive!");
+            return;
+        }
+        else if(!InputValidator.SafeInput(rescueAnimal.Name))
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Invalid Name please only use a-z, A-Z characters");
+        }
+
+        // Input validation for checking dog breed
+        // Also incorporates NoSQL Injection checks using InputValidator.SafeInput()
+        if (rescueAnimal is Dog dog)
+        {
+            if (string.IsNullOrWhiteSpace(dog.Breed))
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Breed is required for Dogs!");
+                return;
+            }
+            if (!InputValidator.SafeInput(dog.Breed))
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Breed contains invalid characters!");
+                return;
+            }
+        }
+
+        // Checks for Type Monkey
+        if (rescueAnimal is Monkey monkey && (string.IsNullOrWhiteSpace(monkey.Species) ||
+            monkey.TailLength < 0 || monkey.Height < 0 ||
+            monkey.BodyLength < 0))
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "All Monkey-specific fields are required!");
+            return;
+        }
+
+        if (isEdit && rescueAnimal.Id != null)
+        {
+            await MongoDbService.UpdateAnimalAsync(rescueAnimal.Id, rescueAnimal);
+           
+        }
+        else
+        {
+            var success = await MongoDbService.InsertAnimalAsync(rescueAnimal);
+            if (!success)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "This animal is already in the system!");
+                return;
+            }
+        }
+
+        await OnAnimalAdded.InvokeAsync();
+        Hide();
+    }
+}

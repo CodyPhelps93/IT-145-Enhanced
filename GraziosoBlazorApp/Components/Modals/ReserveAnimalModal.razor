@@ -1,0 +1,137 @@
+﻿@using GraziosoBlazorApp.Models
+@using GraziosoBlazorApp.Services
+@inject MongoDbService MongoDbService
+@inject IJSRuntime JSRuntime
+
+<div class="modal" tabindex="-1" role="dialog" style="@modalStyle">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reserve an Animal</h5>
+                <button type="button" class="close" @onclick="Hide">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Animal Name</label>
+                    <select class="form-control" @bind="animalName" @bind:after=GetAnimalsCountry>
+                        @foreach (var animal in filteredAnimalNames)
+                        {
+                            <option value="@animal">@animal</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Animal Type</label>
+                    <select class="form-control" @bind="animalType" @bind:after="GetAnimalsName">
+                        <option value="Dog">Dog</option>
+                        <option value="Monkey">Monkey</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Acquisition Country</label>
+                    <select class="form-control" @bind="acquisitionCountry">
+                        @foreach (var country in filteredAnimalCountry)
+                        {
+                            <option value="@country">@country</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" @onclick="ReserveAnimal">Reserve</button>
+                <button type="button" class="btn btn-secondary" @onclick="Hide">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string animalType = "Dog";
+    private string? acquisitionCountry;
+    private string animalName = "";
+    private string animalCountry = "";
+    private string modalStyle = "display: none;";
+    private List<RescueAnimal> availableAnimals = new();
+    private List<string> filteredAnimalNames = new();
+    private List<string> filteredAnimalCountry = new();
+    [Parameter] public EventCallback OnAnimalReserved { get; set; } // used to let parent component know if animal is reserved
+
+
+
+
+    private async Task LoadAvailableAnimals()
+    {
+        availableAnimals = await MongoDbService.GetAvailableAnimalAsync();
+    }
+
+    // Used to get animal name to populate list of available names
+    private void GetAnimalsName()
+    {
+        filteredAnimalNames = availableAnimals.Where(animal => animal.Type == animalType && !string.IsNullOrEmpty(animal.Name))
+        .Select(animal => animal.Name!).ToList();
+        animalName = filteredAnimalNames.Any() ? filteredAnimalNames.First() : "";
+        StateHasChanged();
+    }
+
+    //Function used to populate animal country
+    private void GetAnimalsCountry()
+    {
+        filteredAnimalCountry = availableAnimals.Where(animal => animal.Type == animalType && !string.IsNullOrEmpty(animal.Name) &&
+        animal.Name == animalName)
+       .Select(animal => animal.AcquisitionCountry!).ToList();
+        animalCountry = filteredAnimalCountry.Any() ? filteredAnimalCountry.First() : "";
+        StateHasChanged();
+    }
+
+    private async Task OnAnimalTypeChanged(ChangeEventArgs e)
+    {
+        animalType = e.Value?.ToString() ?? "Dog";
+        animalName = "";
+        await LoadAvailableAnimals();
+        GetAnimalsName();
+        GetAnimalsCountry();
+    }
+
+    // Shows the modal as well what it should do when opened
+    public async void Show()
+    {
+        animalType = "Dog";
+        acquisitionCountry = "";
+        modalStyle = "display: block;";
+        await LoadAvailableAnimals();
+        GetAnimalsName();
+        GetAnimalsCountry();
+        StateHasChanged();
+    }
+
+
+
+    private void Hide()
+    {
+        modalStyle = "display: none;";
+        StateHasChanged();
+    }
+
+    private async Task ReserveAnimal()
+    {
+        if (string.IsNullOrWhiteSpace(acquisitionCountry))
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Acquisition country is required!");
+            return;
+        }
+
+        var success = await MongoDbService.ReserveAnimalAsync(animalType, acquisitionCountry, animalName);
+        if (success)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", $"{animalType}, {animalName} has been reserved!");
+            await LoadAvailableAnimals();
+            GetAnimalsName();
+            await OnAnimalReserved.InvokeAsync();
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("alert", $"No {animalType.ToLower()} available in {acquisitionCountry}!");
+        }
+        Hide();
+    }
+}

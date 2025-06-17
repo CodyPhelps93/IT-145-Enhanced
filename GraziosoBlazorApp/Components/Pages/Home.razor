@@ -1,0 +1,161 @@
+﻿@page "/"
+@using GraziosoBlazorApp.Models
+@using GraziosoBlazorApp.Services
+@using GraziosoBlazorApp.Components.Modals
+@inject MongoDbService MongoDbService
+@inject IJSRuntime JSRuntime
+
+
+<div data-bs-theme="@currentTheme">
+    <h3 class="text-center">Rescue Animal Training System</h3>
+
+    <div class="menu">
+        <h5>Menu Options</h5>
+        <button class="btn btn-outline-light mb-2" @onclick="AddNewDog">1. Intake a new Dog</button>
+        <button class="btn btn-outline-light mb-2" @onclick="AddNewMonkey">2. Intake a new Monkey</button>
+        <button class="btn btn-outline-light mb-2" @onclick="ShowReserveAnimalModal">3. Reserve an Animal</button>
+        <button class="btn btn-outline-light mb-2" @onclick="() => ShowAnimalsList(4)">4. List all Dogs</button>
+        <button class="btn btn-outline-light mb-2" @onclick="() => ShowAnimalsList(5)">5. List all Monkeys</button>
+        <button class="btn btn-outline-light mb-2" @onclick="() => ShowAnimalsList(6)">6. List all Available Animals</button>
+    </div>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-info">@message</div>
+    }
+
+    @if (animals != null)
+    {
+        <h4>Animals</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Acquisition Date</th>
+                    <th>Country</th>
+                    <th>Training Status</th>
+                    <th>Reserved</th>
+                    <th>In Service Country</th>
+                    <th>Details</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var animal in animals)
+                {
+                    <tr>
+                        <td>@animal.Name</td>
+                        <td>@animal.Type</td>
+                        <td>@animal.Gender</td>
+                        <td>@animal.Age</td>
+                        <td>@animal.Weight</td>
+                        <td>@animal.AcquisitionDate.ToString("MM/dd/yyyy")</td>
+                        <td>@animal.AcquisitionCountry</td>
+                        <td>@animal.TrainingStatus</td>
+                        <td>@(animal.Reserved ? "Yes" : "No")</td>
+                        <td>@animal.InServiceCountry</td>
+                        <td>
+                            @if (animal is Dog dog)
+                            {
+                                <span>Breed: @dog.Breed</span>
+                            }
+                            else if (animal is Monkey monkey)
+                            {
+                                <span>Species: @monkey.Species, Tail: @monkey.TailLength, Height: @monkey.Height, Body: @monkey.BodyLength</span>
+                            }
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-warning btn-sm" @onclick="() => ShowAddAnimalModal(animal, animal.Type)">Edit</button>
+                            <button class="btn btn-outline-danger btn-sm" @onclick="() => DeleteAnimal(animal.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+
+    <AddAnimalModal @ref="addAnimalModal" OnAnimalAdded="LoadAnimals" />
+    <ReserveAnimalModal @ref="reserveAnimalModal" OnAnimalReserved="LoadAnimals" />
+
+</div>
+
+@code {
+    private List<RescueAnimal> animals = new List<RescueAnimal>();
+    private AddAnimalModal? addAnimalModal;
+    private ReserveAnimalModal? reserveAnimalModal;
+    private string? message;
+    private int currentListOption;
+    private string currentTheme = "dark";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAnimals();
+    }
+
+    // Loads animals depending on selection
+    private async Task LoadAnimals()
+    {
+        if (currentListOption == 4)
+            animals = await MongoDbService.GetAnimalByTypeAsync("Dog");
+        else if (currentListOption == 5)
+            animals = await MongoDbService.GetAnimalByTypeAsync("Monkey");
+        else if (currentListOption == 6)
+            animals = await MongoDbService.GetAvailableAnimalAsync();
+        else
+            animals = await MongoDbService.GetAllAnimalsAsync();
+        message = null;
+        StateHasChanged();
+    }
+
+    // Functions used to open the add animal Modal
+    private void AddNewDog()
+    {
+        ShowAddAnimalModal(null, "Dog");
+    }
+
+    private void AddNewMonkey()
+    {
+        ShowAddAnimalModal(null, "Monkey");
+    }
+
+    private void ShowAddAnimalModal(RescueAnimal? animal, string? type)
+    {
+        if (addAnimalModal != null && type != null)
+        {
+            addAnimalModal.Show(animal, type);
+        }
+    }
+
+
+    private void ShowReserveAnimalModal()
+    {
+        if (reserveAnimalModal != null)
+            reserveAnimalModal.Show();
+    }
+
+    // Loads animals based on the filter
+    private async Task ShowAnimalsList(int option)
+    {
+        currentListOption = option;
+        await LoadAnimals();
+    }
+
+    // Deletes animal data from DB
+    private async Task DeleteAnimal(string? id)
+    {
+        if (id != null)
+        {
+            await MongoDbService.DeleteAnimalAsync(id);
+            await LoadAnimals();
+        }
+    }
+}
