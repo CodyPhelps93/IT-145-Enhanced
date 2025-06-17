@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\components\\modals\\reserveanimalmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:components\\modals\\reserveanimalmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\components\\modals\\addanimalmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:components\\modals\\addanimalmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\services\\inputvalidationchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:services\\inputvalidationchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|d:\\codyp\\snhu\\cs 499\\codyphelps93.github.io\\artifact 3\\graziosoblazorapp\\models\\rescueanimal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DDABCF4-05B0-44EF-A3CB-E6CB484DFE77}|GraziosoBlazorApp.csproj|solutionrelative:models\\rescueanimal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-06T21:43:13.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.css",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\app.css",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "wwwroot\\css\\app.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-06T21:42:22.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T20:30:15.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-06T20:10:42.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "index.html",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-06-05T17:36:58.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Pages\\Home.razor*",
+              "RelativeToolTip": "Components\\Pages\\Home.razor*",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-05T04:45:15.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RescueAnimal.cs",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Models\\RescueAnimal.cs",
+              "RelativeDocumentMoniker": "Models\\RescueAnimal.cs",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Models\\RescueAnimal.cs",
+              "RelativeToolTip": "Models\\RescueAnimal.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA9wBUAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T05:07:57.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReserveAnimalModal.razor",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Modals\\ReserveAnimalModal.razor",
+              "RelativeDocumentMoniker": "Components\\Modals\\ReserveAnimalModal.razor",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Modals\\ReserveAnimalModal.razor",
+              "RelativeToolTip": "Components\\Modals\\ReserveAnimalModal.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-05T07:01:59.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddAnimalModal.razor",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Modals\\AddAnimalModal.razor",
+              "RelativeDocumentMoniker": "Components\\Modals\\AddAnimalModal.razor",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Components\\Modals\\AddAnimalModal.razor",
+              "RelativeToolTip": "Components\\Modals\\AddAnimalModal.razor",
+              "ViewState": "AgIAAMEAAAAAAAAAAADwv9AAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-06T02:13:23.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InputValidationChecker.cs",
+              "DocumentMoniker": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Services\\InputValidationChecker.cs",
+              "RelativeDocumentMoniker": "Services\\InputValidationChecker.cs",
+              "ToolTip": "D:\\codyp\\SNHU\\CS 499\\CodyPhelps93.github.io\\Artifact 3\\GraziosoBlazorApp\\Services\\InputValidationChecker.cs",
+              "RelativeToolTip": "Services\\InputValidationChecker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T18:57:56.506Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
